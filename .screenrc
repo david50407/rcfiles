@@ -4,8 +4,12 @@ defc1 off # treat input chars 128 ~ 159 as control functions
 defflow on
 vbell off
 vbell_msg "Oops!"
+msgwait 1
 startup_message off
-# term "screen-256color-bce"
+term "screen-256color"
+attrcolor b ".I"    # allow bold colors - necessary for some reason
+termcap xterm* 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+terminfo xterm* 'Co#256:AB=\E[48;5;%p1%dm:AF=\E[38;5;%p1%dm'
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 shell $SHELL
 # 使用 Ctrl+Left & Ctrl+Right 切換
@@ -17,6 +21,7 @@ bindkey ^[[5D prev
 bindkey ^[[5C next
 # encoding
 defencoding utf8
+encoding utf8 utf8
 bind b encoding big5 big5
 bind u encoding utf8 big5
 

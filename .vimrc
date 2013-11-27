@@ -1,3 +1,5 @@
+syntax on
+set backspace=indent,eol,start
 set modeline
 "ruby
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
@@ -11,7 +13,11 @@ highlight Pmenu ctermbg=238 gui=bold
 set laststatus=2
 set t_Co=256
 set tabstop=2
-let g:Powerline_symbols = 'fancy'
+if ! exists('g:Powerline_symbols')
+	exec 'let g:Powerline_symbols = "fancy"'
+endif
+
+" let g:Powerline_symbols = 'fancy'
 
 color Tomorrow-Night-Bright
 

@@ -5,6 +5,10 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+export TERM=xterm-color
+export CLICOLOR=yes
+# export LSCOLORS=Dxfxcxdxbxegedabagacad
+
 # don't put duplicate lines in the history. See bash(1) for more options
 export HISTCONTROL=ignoredups
 # ... and ignore same sucessive entries.
@@ -86,11 +90,13 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # some useful aliases
-alias chbbs='sudo su bbs'
 alias scr='screen -rd'
 alias updatetime='sudo ntpdate pool.ntp.org'
 
 alias :q='cd ..'
+
+# alias vim='vim -c "PowerlineClearCache"'
+alias vimc='vim --cmd "let g:Powerline_symbols = \"compatible\""'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -114,6 +120,8 @@ function _update_ps1()
 
 export PROMPT_COMMAND="_update_ps1"
 
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export MM_CHARSET=utf8
+export EDITOR=vim
