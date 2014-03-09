@@ -8,6 +8,7 @@ msgwait 1
 startup_message off
 term "screen-256color"
 attrcolor b ".I"    # allow bold colors - necessary for some reason
+attrcolor i "+b"
 termcap xterm* 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 terminfo xterm* 'Co#256:AB=\E[48;5;%p1%dm:AF=\E[38;5;%p1%dm'
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
@@ -37,7 +38,7 @@ bindkey -k k; title
 bind R eval "source $HOME/.screenrc" "echo '.screenrc reloaded!'"
 
 defbce on # erase background with current bg color
-cjkwidth off
+# cjkwidth off
 #caption always "%{WK}%-w%<%{=B GK}%n %t%{= KW}%+w%-09="
 #hardstatus alwayslastline "%{R}[ %{w}%1` %{R}]%=%{M}%e %{G}%H %{Y} %c %{R} %d/%m/%Y %{K} Load: %l %{w}"
 #caption always "%{=ub .W} %n] %{=u .G} %-w%<%{=ub .y}%n %t%{=u .G}%+w "
