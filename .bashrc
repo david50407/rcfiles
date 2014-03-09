@@ -110,10 +110,8 @@ function _update_ps1()
     SCREEN_LINES=$(tput lines)
     SCREEN_COLS=$(tput cols)
 
-#    export PS1="`echo;tput sc;tput cup $SCREEN_LINES 0;tput il 1;~/powerline-bash.rb $SCREEN_LINES $SCREEN_COLS;tput rc;tput cuu 1`"
-    export PS1=""
-
     if [ -f ~/powerline-bash.py ]; then
+       export PS1=""
        export PS1="$PS1$(~/powerline-bash.py $?)"
     fi
 }
@@ -125,3 +123,5 @@ export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export MM_CHARSET=utf8
 export EDITOR=vim
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
