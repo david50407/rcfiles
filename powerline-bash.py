@@ -5,6 +5,8 @@ import os
 import subprocess
 import sys
 
+UNIQUEID = ""
+
 class Powerline:
     separator = '⮀'
     separator_thin='⮁'
@@ -154,6 +156,8 @@ if __name__ == '__main__':
     p = Powerline()
     #p.append(' \\u ', 250, 240)
     #p.append(' \\h ', 250, 238)
+    if UNIQUEID != '':
+        p.append(' ' + UNIQUEID + ' ', 88, 208)
     add_cwd_segment(p, 6)
 
     not_git_repo = not add_git_segment(p)
