@@ -61,10 +61,11 @@ task :copy_vimrc do
 end
 
 task :copy_vim do
-  cp_r '.vim', File.join(Dir.home, '.vim')
+  cp_r '.vim/', File.join(Dir.home, '.vim/')
 end
 
 multitask :vim => [:copy_vimrc, :copy_vim] do
+  puts "Installing Vundle and bundles, please wait."
   `vim +BundleInstall +qall`
 end
 
