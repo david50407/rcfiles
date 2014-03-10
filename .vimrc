@@ -24,6 +24,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 "" SnipMate
+Bundle 'tomtom/tlib_vim'
 Bundle 'marcweber/vim-addon-mw-utils'
 Bundle 'garbas/vim-snipmate'
 
