@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/david50407'
-let g:netrw_dirhist_2='/home/david50407/public_html/Theogony/.git'
-let g:netrw_dirhist_3='/home/david50407/.vim'
-let g:netrw_dirhist_4='/home/david50407/.vim/autoload/omni/cpp'
-let g:netrw_dirhist_5='/home/david50407/.vim'
-let g:netrw_dirhist_6='/home/david50407/code/sprout/seats/heroku'
-let g:netrw_dirhist_7='/home/david50407/public_html/chewing/chewing-web/_layouts'
