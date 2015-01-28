@@ -3,28 +3,11 @@ require 'tempfile'
 
 task :default do
   puts "Welcome to use Davy's automatic tool for installing rcfiles!"
-  puts "  `rake bash`    for `.bash_profile`, `.bashrc`, `powerline-bash.py` installation"
+  puts "  `rake bash`    for `.bash_profile`, `.bashrc`, `powerline-shell.py` installation"
   puts "  `rake screen`  for `.screenrc`      installation"
   puts "  `rake vim`     for `.vim`, `.vimrc` installation"
   puts "  `rake git`     for `.gitconfig`     installation"
   puts "  `rake install` for above all installation"
-  puts "  `rake install[NAME]` for above and set unique ID for powerline"
-end
-
-def unique_powerline(name = "")
-  t_file = Tempfile.new('.powerline-bash.py.tmp')
-  File.open File.join(Dir.home, 'powerline-bash.py'), 'r' do |f|
-    f.each_line do |line|
-      if line =~ /^UNIQUEID/
-        t_file.puts %(UNIQUEID = "#{name}")
-      else
-        t_file.puts line.rstrip
-      end
-    end
-  end
-  t_file.close
-  mv t_file.path, File.join(Dir.home, 'powerline-bash.py')
-  FileUtils.chmod '+x', File.join(Dir.home, 'powerline-bash.py')
 end
 
 task :install, [:name] => [:bash, :screen, :vim, :git] do |t, args|
@@ -36,8 +19,8 @@ task :copy_bash_profile do
 end
 
 task :copy_powerline do
-  cp 'powerline-bash.py', File.join(Dir.home, 'powerline-bash.py')
-  FileUtils.chmod '+x', File.join(Dir.home, 'powerline-bash.py')
+  cp 'powerline-shell.py', File.join(Dir.home, 'powerline-shell.py')
+  FileUtils.chmod '+x', File.join(Dir.home, 'powerline-shell.py')
 end
 
 task :copy_bashrc do
@@ -47,7 +30,6 @@ end
 multitask :bash, [:name] => [:copy_bash_profile, :copy_powerline, :copy_bashrc] do |t, args|
   args.with_defaults(:name => "")
   `source ~/.bashrc`
-  unique_powerline args.name unless args.name.empty?
 end
 
 task :screen do

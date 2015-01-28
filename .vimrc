@@ -1,3 +1,8 @@
+" Vim needs a POSIX-Compliant shell. Fish is not.
+if $SHELL =~ 'bin/fish'
+	set shell=/bin/sh
+endif
+
 " Load Vundle as plugin manager
 :so ~/.vim/Vundle.vim
 
@@ -22,6 +27,9 @@ autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+
+"" Vim for CoffeeScript
+Bundle 'kchmck/vim-coffee-script'
 
 "" SnipMate
 Bundle 'tomtom/tlib_vim'
@@ -52,11 +60,18 @@ Bundle 'guns/xterm-color-table.vim'
 "" Cute Error Marker
 Bundle 'Twinside/vim-cuteErrorMarker'
 
+"" Yaml
+Bundle 'avakhov/vim-yaml'
+
+"" Slim
+Bundle 'slim-template/vim-slim'
+
 " Configs
 syntax on
 set modeline
 set t_Co=256
 set tabstop=2
+filetype plugin indent on
 
 "" improve autocomplete menu color
 highlight Pmenu ctermbg=238 gui=bold
@@ -64,4 +79,3 @@ highlight Pmenu ctermbg=238 gui=bold
 "" Markdown
 au  BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn}   set filetype=markdown
 let g:markdown_fenced_languages = ['ruby', 'java', 'html']
-
