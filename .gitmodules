@@ -1,0 +1,3 @@
+[submodule ".config/fish/submodules/Tomorrow-Night-Bright-Fish"]
+	path = .config/fish/submodules/Tomorrow-Night-Bright-Fish
+	url = https://github.com/david50407/Tomorrow-Night-Bright-Fish.git
