@@ -4,17 +4,13 @@ end
 
 function __print_date
 	echo "[38;5;208m" # fg color
-	echo \u2B82
-	echo "[48;5;208m" # bg color
-	echo "[38;5;88m" # fg color
+	echo "<"
 	date "+ %m/%d "
 end
 
 function __print_time
 	echo "[38;5;148m" # fg color
-	echo \u2B82
-	echo "[48;5;148m" # bg color
-	echo "[38;5;22m" # fg color
+	echo "<"
 	date "+ %H:%M "
 end
 
