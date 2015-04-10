@@ -4,9 +4,9 @@ require 'tempfile'
 task :default do
   puts "Welcome to use Davy's automatic tool for installing rcfiles!"
   puts "  `rake bash`    for `.bash_profile`, `.bashrc`, `powerline-shell.py` installation"
-  puts "  `rake screen`  for `.screenrc`      installation"
-  puts "  `rake vim`     for `.vim`, `.vimrc` installation"
-  puts "  `rake git`     for `.gitconfig`     installation"
+  puts "  `rake screen`  for `.screenrc`                                      installation"
+	puts "  `rake vim`     for `.vim`, `.vimrc`                                 installation"
+	puts "  `rake git`     for `.gitconfig`, `.gitignore_global`                installation"
   puts "  `rake install` for above all installation"
 end
 
@@ -53,4 +53,5 @@ end
 
 task :git do
   cp '.gitconfig', File.join(Dir.home, '.gitconfig')
+  cp '.gitignore_global', File.join(Dir.home, '.gitignore_global')
 end
