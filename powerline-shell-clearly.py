@@ -160,6 +160,7 @@ class DefaultColor:
     VIRTUAL_ENV_FG = 53
 
     RVM_ENV_FG = 160
+    NVM_ENV_FG = 148
 
 class Color(DefaultColor):
     """
@@ -478,6 +479,20 @@ def add_rvm_segment():
 
 try:
     add_rvm_segment()
+except OSError:
+    pass
+except subprocess.CalledProcessError:
+    pass
+
+def add_nvm_segment():
+    node_current = subprocess.Popen(['node', '-v'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    output = node_current.communicate()[0].strip()
+    if len(output) > 0:
+        output = output.split('v')[1]
+        powerline.append(' %s ' % output, Color.NVM_ENV_FG)
+
+try:
+    add_nvm_segment()
 except OSError:
     pass
 except subprocess.CalledProcessError:

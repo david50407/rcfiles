@@ -1,3 +1,9 @@
 [submodule ".config/fish/submodules/Tomorrow-Night-Bright-Fish"]
 	path = .config/fish/submodules/Tomorrow-Night-Bright-Fish
 	url = https://github.com/david50407/Tomorrow-Night-Bright-Fish.git
+[submodule ".config/fish/submodules/nvm-wrapper"]
+	path = .config/fish/submodules/nvm-wrapper
+	url = git://github.com/passcod/nvm-fish-wrapper.git
+[submodule ".config/fish/submodules/bass"]
+	path = .config/fish/submodules/bass
+	url = git@github.com:edc/bass.git
