@@ -8,8 +8,11 @@
 [core]
 	excludesfile = /Users/Davy/.gitignore_global
 	whitespace = indent-with-non-tab, space-before-tab, trailing-space, cr-at-eol
+	autocrlf = input
 	pager = less -x2
 [push]
 	default = simple
 [help]
 	autocorrect = 1
+[url "https://"]
+	insteadOf = git://
