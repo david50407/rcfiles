@@ -16,9 +16,17 @@ function __print_time
 	date "+ %H:%M "
 end
 
+function __print_host
+	echo "[38;5;31m" # fg color
+	echo "< "
+	hostname | sed 's/Davy-//i'
+	echo " "
+end
+
 function fish_right_prompt -d "Write out the date and time on right prompt"
 	__print_date
 	__print_time
+	__print_host
 	echo "[m"
 end
 
@@ -37,3 +45,10 @@ end
 rvm current 1>/dev/null 2>/dev/null
 bass source ~/.nvm/nvm.sh 1>/dev/null 2>/dev/null
 
+if [ $os = 'Linux' ]
+	set -x PERL_MB_OPT --install_base\ \"/home/davy/perl5\";
+	set -x PERL_MM_OPT INSTALL_BASE=/home/davy/perl5;
+	set -x PERL5LIB /home/davy/perl5/lib/perl5;
+	
+	. ~/.config/fish/ssh-agent.fish
+end
