@@ -1,4 +1,4 @@
-set $os (uname)
+set os (uname)
 
 function fish_prompt
 	~/powerline-shell-clearly.py $status --shell bare ^/dev/null
@@ -19,7 +19,12 @@ end
 function __print_host
 	echo "[38;5;31m" # fg color
 	echo "< "
-	hostname | sed 's/Davy-//i'
+	switch $os
+	case Darwin
+		hostname | sed -E 's/Davy-|davy-//' | sed -E 's/\..+//'
+	case Linux
+		hostname | sed 's/Davy-//i'
+  end
 	echo " "
 end
 
