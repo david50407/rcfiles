@@ -7,6 +7,8 @@ endif
 :so ~/.vim/Vundle.vim
 
 " Bundles
+"" EditorConfig
+Bundle 'editorconfig/editorconfig-vim'
 "" Tomorrow colors
 Bundle 'david50407/tomorrow-theme-vim'
 color Tomorrow-Night-Bright
@@ -20,6 +22,15 @@ let g:Powerline_symbols = 'fancy'
 " let g:airline_powerline_fonts=0
 " let g:airline_left_sep="\u2b80"
 " let g:airline_right_sep="\u2b82"
+
+" Scrollbar
+" Plugin 'lornix/vim-scrollbar'
+
+"" Minimap
+" Plugin 'severin-lemaignan/vim-minimap'
+" Plugin 'mipmip/vim-minimap'
+Plugin 'david50407/vim-minimap'
+map <Leader>m :MinimapToggle<CR>
 
 "" Vim for Ruby
 Bundle 'vim-ruby/vim-ruby'
@@ -66,12 +77,30 @@ Bundle 'avakhov/vim-yaml'
 "" Slim
 Bundle 'slim-template/vim-slim'
 
+"" SCSS
+Bundle 'cakebaker/scss-syntax.vim'
+
+"" HTML5
+Bundle 'othree/html5.vim'
+
+"" JSX React.js
+Bundle 'mxw/vim-jsx'
+let g:jsx_ext_required = 0
+
+"" Crystal
+Bundle 'rhysd/vim-crystal'
+au  BufRead,BufNewFile *.{cr,ecr}   set filetype=crystal
+
 " Configs
 syntax on
 set modeline
 set t_Co=256
 set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set nocompatible
 filetype plugin indent on
+set fileencodings=utf8,big5,gbk,latin1
 
 "" improve autocomplete menu color
 highlight Pmenu ctermbg=238 gui=bold
@@ -79,3 +108,18 @@ highlight Pmenu ctermbg=238 gui=bold
 "" Markdown
 au  BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn}   set filetype=markdown
 let g:markdown_fenced_languages = ['ruby', 'java', 'html']
+
+"" Auto paste
+if &term =~ "xterm.*"
+	let &t_ti = &t_ti . "\e[?2004h"
+	let &t_te = "\e[?2004l" . &t_te
+	function XTermPasteBegin(ret)
+		set pastetoggle=<Esc>[201~
+		set paste
+		return a:ret
+	endfunction
+	map <expr> <Esc>[200~ XTermPasteBegin("i")
+	imap <expr> <Esc>[200~ XTermPasteBegin("")
+	cmap <Esc>[200~ <nop>
+	cmap <Esc>[201~ <nop>
+endif
