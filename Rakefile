@@ -7,10 +7,11 @@ task :default do
   puts "  `rake screen`  for `.screenrc`                                      installation"
 	puts "  `rake vim`     for `.vim`, `.vimrc`                                 installation"
 	puts "  `rake git`     for `.gitconfig`, `.gitignore_global`                installation"
+	puts "  `rake tool`    for `.config/opt`                                    installation"
   puts "  `rake install` for above all installation"
 end
 
-task :install, [:name] => [:bash, :screen, :vim, :git] do |t, args|
+task :install, [:name] => [:bash, :screen, :vim, :git, :tool] do |t, args|
   args.with_defaults(:name => "")
 end
 
@@ -54,4 +55,8 @@ end
 task :git do
   cp '.gitconfig', File.join(Dir.home, '.gitconfig')
   cp '.gitignore_global', File.join(Dir.home, '.gitignore_global')
+end
+
+task :tool do
+	cp_r '.config/opt/', File.join(Dir.home, '.config/opt/')
 end
