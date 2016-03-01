@@ -54,6 +54,27 @@ if [ $os = 'Linux' ]
 	set -x PERL_MB_OPT --install_base\ \"/home/davy/perl5\";
 	set -x PERL_MM_OPT INSTALL_BASE=/home/davy/perl5;
 	set -x PERL5LIB /home/davy/perl5/lib/perl5;
+	set crenv_path /home/davy/.crenv/bin
+	set -gx PATH $crenv_path $PATH
 	
 	. ~/.config/fish/ssh-agent.fish
+
+	setenv PATH '/home/davy/.crenv/shims' $PATH
+	setenv CRENV_SHELL fish
+	. '/home/davy/.crenv/libexec/../completions/crenv.fish'
+	command crenv rehash 2>/dev/null
+	function crenv
+		set command $argv[1]
+		set -e argv[1]
+
+		switch "$command"
+		case rehash shell update
+		. (crenv "sh-$command" $argv|psub)
+		case '*'
+		command crenv "$command" $argv
+		end
+	end
 end
+
+bind \eOF beginning-of-line
+bind \eOH end-of-line
