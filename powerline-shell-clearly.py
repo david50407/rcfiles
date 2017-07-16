@@ -159,8 +159,9 @@ class DefaultColor:
 
     VIRTUAL_ENV_FG = 53
 
-    RVM_ENV_FG = 160
-    NVM_ENV_FG = 148
+    RVM_ENV_FG   = 160
+    CRENV_ENV_FG = 39
+    NVM_ENV_FG   = 148
 
 class Color(DefaultColor):
     """
@@ -471,14 +472,33 @@ import os
 import subprocess
 
 def add_rvm_segment():
-    rvm_current = subprocess.Popen(['ruby', '-v'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    output = rvm_current.communicate()[0].strip()
-    if len(output) > 0:
-        output = output.split(' ')[1]
+    ruby_v = subprocess.Popen(['ruby', '-v'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    ruby_version = ruby_v.communicate()[0].strip()
+    gemdir = os.environ['GEM_HOME'] + '@'
+    if len(ruby_version) > 0:
+        output = ruby_version.split(' ')[1]
+        if len(gemdir) > 0:
+            gemset_name = gemdir.split('@')[1]
+            if len(gemset_name) > 0:
+                output += "@" + gemset_name
         powerline.append(' %s ' % output, Color.RVM_ENV_FG)
 
 try:
     add_rvm_segment()
+except OSError:
+    pass
+except subprocess.CalledProcessError:
+    pass
+
+def add_crenv_segment():
+    crystal_current = subprocess.Popen(['crenv', 'version'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    output = crystal_current.communicate()[0].strip()
+    if len(output) > 0:
+        output = output.split(' ')[0]
+        powerline.append(' %s ' % output, Color.CRENV_ENV_FG)
+
+try:
+    add_crenv_segment()
 except OSError:
     pass
 except subprocess.CalledProcessError:
