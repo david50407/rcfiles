@@ -1,7 +1,7 @@
 set os (uname)
 
 function fish_prompt
-	~/powerline-shell-clearly.py $status --shell bare ^/dev/null
+	powerline
 end
 
 function __print_date
