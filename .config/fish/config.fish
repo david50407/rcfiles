@@ -40,15 +40,15 @@ if [ $os = 'Darwin' ]
 	set -gx ANDROID_HOME ~/Library/Developer/AndroidSDK
 	set default_path /usr/bin /usr/sbin /bin /sbin
 	set homebrew /usr/local/bin /usr/local/sbin
-	set npm_path /usr/local/share/npm/bin
 	set android_sdk $ANDROID_HOME/platform-tools/
 	set android_sdk_toolchains $ANDROID_HOME/tools/
-	set -gx PATH $android_sdk $android_sdk_toolchains $npm_path $homebrew $default_path
+	set llvm_path /usr/local/opt/llvm/bin/
+	set -gx PATH $llvm_path $android_sdk $android_sdk_toolchains $homebrew $default_path
 	set -gx LIBRARY_PATH $LIBRARY_PATH /usr/local/lib
+	set -gx BYOBU_PREFIX /usr/local
 end
 
 rvm default 1>/dev/null 2>/dev/null
-bass source ~/.nvm/nvm.sh 1>/dev/null 2>/dev/null
 
 if [ $os = 'Linux' ]
 	set -gx ANDROID_HOME /usr/local/android-sdk-linux
@@ -83,6 +83,8 @@ if [ $os = 'Linux' ]
 		end
 	end
 end
+
+alias gti git
 
 bind \eOF beginning-of-line
 bind \eOH end-of-line

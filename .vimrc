@@ -29,8 +29,6 @@ let g:Powerline_symbols = 'fancy'
 "" Minimap
 " Plugin 'severin-lemaignan/vim-minimap'
 " Plugin 'mipmip/vim-minimap'
-Plugin 'david50407/vim-minimap'
-map <Leader>m :MinimapToggle<CR>
 
 "" Vim for Ruby
 Bundle 'vim-ruby/vim-ruby'
@@ -38,9 +36,11 @@ autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd BufRead,BufNewFile Podfile set filetype=ruby
 
 "" Vim for CoffeeScript
 Bundle 'kchmck/vim-coffee-script'
+au BufRead,BufNewFile *.coffee set filetype=coffee
 
 "" SnipMate
 Bundle 'tomtom/tlib_vim'
@@ -76,6 +76,7 @@ Bundle 'avakhov/vim-yaml'
 
 "" Slim
 Bundle 'slim-template/vim-slim'
+au  BufRead,BufNewFile *.slim   set filetype=slim
 
 "" SCSS
 Bundle 'cakebaker/scss-syntax.vim'
@@ -84,7 +85,9 @@ Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'othree/html5.vim'
 
 "" JSX React.js
+Bundle 'pangloss/vim-javascript'
 Bundle 'mxw/vim-jsx'
+let g:javascript_enable_domhtmlcss = 1
 let g:jsx_ext_required = 0
 
 "" Crystal

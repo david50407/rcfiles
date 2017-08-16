@@ -5,3 +5,6 @@
 # Vim
 .*.swp
 .*.un~
+*_.swp
+
+.ruby-gemset
