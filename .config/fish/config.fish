@@ -67,8 +67,8 @@ if [ $os = 'Linux' ]
 	
 	. ~/.config/fish/ssh-agent.fish
 
-	setenv PATH '/home/davy/.crenv/shims' $PATH
-	setenv CRENV_SHELL fish
+	set -gx PATH '/home/davy/.crenv/shims' $PATH
+	set -gx CRENV_SHELL fish
 	. '/home/davy/.crenv/libexec/../completions/crenv.fish'
 	command crenv rehash 2>/dev/null
 	function crenv
