@@ -58,16 +58,16 @@ if [ $os = 'Linux' ]
 	set android_ndk /usr/local/android-ndk-linux
 	set android_sdk_toolchains $ANDROID_HOME/tools/
 	set npm_path /home/davy/.npm-global/bin
-	set crenv_path /home/davy/.crenv/bin
+	set crenv_path /home/davy/.crenv
 	set diff_so_fancy_path /home/davy/.config/opt/diff-so-fancy
 	set own_bin_path /home/davy/.bin
-	set -gx PATH $own_bin_path $diff_so_fancy_path $crenv_path $npm_path $android_sdk $android_sdk_toolchains $android_ndk $heroku $PATH
+	set -gx PATH $own_bin_path $diff_so_fancy_path $crenv_path/bin $npm_path $android_sdk $android_sdk_toolchains $android_ndk $heroku $PATH
 	
-	. ~/.config/fish/ssh-agent.fish
+	. {$HOME}/.config/fish/functions/ssh-agent.fish
 
-	set -gx PATH '/home/davy/.crenv/shims' $PATH
+	set -gx PATH "$crenv_path/shims" $PATH
 	set -gx CRENV_SHELL fish
-	. '/home/davy/.crenv/libexec/../completions/crenv.fish'
+	. {$crenv_path}/completions/crenv.fish
 	command crenv rehash 2>/dev/null
 	function crenv
 		set command $argv[1]
