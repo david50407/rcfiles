@@ -48,8 +48,6 @@ if [ $os = 'Darwin' ]
 	set -gx BYOBU_PREFIX /usr/local
 end
 
-rvm default 1>/dev/null 2>/dev/null
-
 if [ $os = 'Linux' ]
 	set -gx ANDROID_HOME /usr/local/android-sdk-linux
 	set -x PERL_MB_OPT --install_base\ \"/home/davy/perl5\";
@@ -89,4 +87,6 @@ alias gti git
 bind \eOF beginning-of-line
 bind \eOH end-of-line
 
-cd . # Reload current rvm
+test -e {$HOME}/.config/fish/functions/rvm.fish
+	and source {$HOME}/.config/fish/functions/rvm.fish
+rvm reload >/dev/null 2>/dev/null
