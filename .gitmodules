@@ -7,3 +7,6 @@
 [submodule ".config/fish/submodules/bass"]
 	path = .config/fish/submodules/bass
 	url = git@github.com:edc/bass.git
+[submodule ".config/fish/submodules/docker-fish-completion"]
+	path = .config/fish/submodules/docker-fish-completion
+	url = https://github.com/barnybug-archive/docker-fish-completion.git
