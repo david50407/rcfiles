@@ -90,3 +90,6 @@ bind \eOH end-of-line
 test -e {$HOME}/.config/fish/functions/rvm.fish
 	and source {$HOME}/.config/fish/functions/rvm.fish
 rvm reload >/dev/null 2>/dev/null
+
+test -e {$HOME}/.nix-profile/etc/profile.d/nix.fish
+	and source {$HOME}/.nix-profile/etc/profile.d/nix.fish
