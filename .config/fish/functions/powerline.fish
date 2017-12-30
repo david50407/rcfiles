@@ -106,7 +106,7 @@ function __powerline_segment_git_status -d "Fetch git status"
 	set -l untracked no
 	set -l position
 
-	set -l git_status (command git status --ignore-submodules)
+	set -l git_status (command git status --ignore-submodules ^/dev/null)
 	string match -qr 'nothing to commit' -- $git_status
 		and set dirty no
 	string match -qr 'Untracked files' -- $git_status
