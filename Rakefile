@@ -3,11 +3,11 @@ require 'tempfile'
 
 task :default do
   puts "Welcome to use Davy's automatic tool for installing rcfiles!"
-  puts "  `rake bash`    for `.bash_profile`, `.bashrc`, `powerline-shell.py` installation"
-  puts "  `rake screen`  for `.screenrc`                                      installation"
-	puts "  `rake vim`     for `.vim`, `.vimrc`                                 installation"
-	puts "  `rake git`     for `.gitconfig`, `.gitignore_global`                installation"
-	puts "  `rake tool`    for `.config/opt`                                    installation"
+  puts "  `rake bash`    for `.bash_profile`, `.bashrc`, `powerline-shell-clearly.py` installation"
+  puts "  `rake screen`  for `.screenrc`                                              installation"
+	puts "  `rake vim`     for `.vim`, `.vimrc`                                         installation"
+	puts "  `rake git`     for `.gitconfig`, `.gitignore_global`                        installation"
+	puts "  `rake tool`    for `.config/opt`                                            installation"
   puts "  `rake install` for above all installation"
 end
 
@@ -20,8 +20,8 @@ task :copy_bash_profile do
 end
 
 task :copy_powerline do
-  cp 'powerline-shell.py', File.join(Dir.home, 'powerline-shell.py')
-  FileUtils.chmod '+x', File.join(Dir.home, 'powerline-shell.py')
+  cp 'powerline-shell-clearly.py', File.join(Dir.home, 'powerline-shell-clearly.py')
+  FileUtils.chmod '+x', File.join(Dir.home, 'powerline-shell-clearly.py')
 end
 
 task :copy_bashrc do

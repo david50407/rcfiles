@@ -110,9 +110,9 @@ function _update_ps1()
     SCREEN_LINES=$(tput lines)
     SCREEN_COLS=$(tput cols)
 
-    if [ -f ~/powerline-bash.py ]; then
+    if [ -f ~/powerline-bash-clearly.py ]; then
        export PS1=""
-       export PS1="$PS1$(~/powerline-bash.py $?)"
+       export PS1="$PS1$(~/powerline-bash-clearly.py $?)"
     fi
 }
 
