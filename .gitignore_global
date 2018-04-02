@@ -2,9 +2,15 @@
 *~
 .DS_Store
 
+Thumbs.db
+
 # Vim
 .*.swp
 .*.un~
 *_.swp
 
 .ruby-gemset
+
+screenlog.*
+
+yarn-error.log

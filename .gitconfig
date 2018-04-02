@@ -3,10 +3,13 @@
 	email = s50407s@gmail.com
 [alias]
 	lg = !"git lg1"
-	lg1 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit
-	lg2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)- %an%C(reset)' --abbrev-commit
+	ls = !"git ls1"
+	ls1 = !"git lg1 --simplify-by-decoration"
+	ls2 = !"git lg2 --simplify-by-decoration"
+	lg1 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)- %an%C(reset)%C(auto)%d%C(reset)' --abbrev-commit
+	lg2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)- %an%C(reset)' --abbrev-commit
 [core]
-	excludesfile = /Users/Davy/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	whitespace = indent-with-non-tab, space-before-tab, trailing-space, cr-at-eol
 	autocrlf = input
 	pager = less -x2
@@ -14,8 +17,14 @@
 	default = simple
 [help]
 	autocorrect = 1
-[url "https://"]
-	insteadOf = git://
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
+[rebase]
+	autoStash = true
+	autoSquash = true
+[color "decorate"]
+	HEAD = bold magenta
+	branch = bold yellow
+	remoteBranch = yellow
+	stash = bold red
