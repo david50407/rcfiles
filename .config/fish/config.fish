@@ -37,9 +37,21 @@ end
 
 ### PATH ###
 if [ $os = 'Darwin' ]
+	set arch (uname -m)
+	if [ $arch = 'arm64' ]
+		set is_rosetta (sysctl -n sysctl.proc_translated)
+		if [ $is_rosetta = '1' ]
+			set homebrew /opt/homebrew.x86_64/bin
+		else
+			alias x86 "arch -arch x86_64"
+			set homebrew /opt/homebrew/bin
+		end
+	else
+		set homebrew /opt/homebrew/bin
+	end
+
 	set -gx ANDROID_HOME ~/Library/Developer/AndroidSDK
-	set default_path /usr/bin /usr/sbin /bin /sbin
-	set homebrew /usr/local/bin /usr/local/sbin
+	set default_path /usr/local/bin /usr/bin /usr/sbin /bin /sbin
 	set android_sdk $ANDROID_HOME/platform-tools/
 	set android_sdk_toolchains $ANDROID_HOME/tools/
 	set llvm_path /usr/local/opt/llvm/bin/
@@ -89,7 +101,7 @@ bind \eOH end-of-line
 
 test -e {$HOME}/.config/fish/functions/rvm.fish
 	and source {$HOME}/.config/fish/functions/rvm.fish
-rvm reload >/dev/null 2>/dev/null
+	and rvm reload >/dev/null 2>/dev/null
 
 test -e {$HOME}/.nix-profile/etc/profile.d/nix.fish
 	and source {$HOME}/.nix-profile/etc/profile.d/nix.fish

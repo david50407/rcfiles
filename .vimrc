@@ -39,13 +39,13 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd BufRead,BufNewFile Podfile set filetype=ruby
 
 "" Vim for CoffeeScript
-Bundle 'kchmck/vim-coffee-script'
-au BufRead,BufNewFile *.coffee set filetype=coffee
+" Bundle 'kchmck/vim-coffee-script'
+" au BufRead,BufNewFile *.coffee set filetype=coffee
 
 "" SnipMate
-Bundle 'tomtom/tlib_vim'
-Bundle 'marcweber/vim-addon-mw-utils'
-Bundle 'garbas/vim-snipmate'
+" Bundle 'tomtom/tlib_vim'
+" Bundle 'marcweber/vim-addon-mw-utils'
+" Bundle 'garbas/vim-snipmate'
 
 "" Emmet / ZenCoding
 Bundle 'mattn/emmet-vim'
@@ -69,14 +69,14 @@ Bundle 'ervandew/supertab'
 Bundle 'guns/xterm-color-table.vim'
 
 "" Cute Error Marker
-Bundle 'Twinside/vim-cuteErrorMarker'
+" Bundle 'Twinside/vim-cuteErrorMarker'
 
 "" Yaml
 Bundle 'avakhov/vim-yaml'
 
 "" Slim
-Bundle 'slim-template/vim-slim'
-au  BufRead,BufNewFile *.slim   set filetype=slim
+" Bundle 'slim-template/vim-slim'
+" au  BufRead,BufNewFile *.slim   set filetype=slim
 
 "" SCSS
 Bundle 'cakebaker/scss-syntax.vim'
