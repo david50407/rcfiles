@@ -79,7 +79,7 @@ function __powerline_segment_git -d "Powerline Git"
 	not command -sq git
 		and return 1
 
-	set -l branch (command git symbolic-ref -q HEAD ^/dev/null)
+	set -l branch (command git symbolic-ref -q HEAD 2>/dev/null)
 	set -l os $status
 	switch $os
 		case 0
@@ -106,7 +106,7 @@ function __powerline_segment_git_status -d "Fetch git status"
 	set -l untracked no
 	set -l position
 
-	set -l git_status (command git status --ignore-submodules ^/dev/null)
+	set -l git_status (command git status --ignore-submodules 2>/dev/null)
 	string match -qr 'nothing to commit' -- $git_status
 		and set dirty no
 	string match -qr 'Untracked files' -- $git_status
