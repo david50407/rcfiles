@@ -1,7 +1,4 @@
 ### blahblahblah env
-test -e {$HOME}/.rbenv/bin/rbenv
-	and set -Ux fish_user_paths "$HOME/.rbenv/bin"
-
 alias gti git
 alias l ls
 
@@ -15,11 +12,11 @@ test -e {$HOME}/.bin
 	and set -gx PATH {$HOME}/.bin $PATH
 
 if status --is-interactive
-	source (rbenv init -|psub)
-	source (nodenv init -|psub)
-	source (goenv init -|psub)
-	source (anyenv init -|psub)
+	source (command -q rbenv  && rbenv  init - | psub)
+	source (command -q nodenv && nodenv init - | psub)
+	source (command -q goenv  && goenv  init - | psub)
+	source (command -q anyenv && anyenv init - | psub)
+	source (command -q direnv && direnv hook fish | psub)
 end
 
-direnv hook fish | source
 
